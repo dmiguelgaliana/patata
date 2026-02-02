@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mb-3">Añadir usuario</h2>
+
+<form method="POST" class="card p-4 shadow-sm">
+    <label>Nombre:</label>
+    <input type="text" name="nombre" class="form-control mb-3" required>
+
+    <label>Correo:</label>
+    <input type="email" name="mail" class="form-control mb-3" required>
+
+    <button class="btn btn-success">Guardar</button>
+</form>
+
+{% if mensaje %}
+<div class="alert alert-success mt-3">{{ mensaje }}</div>
+{% endif %}
+
+{% if error %}
+<div class="alert alert-danger mt-3">{{ error }}</div>
+{% endif %}
+
+<a href="/getmail" class="btn btn-link mt-3">Buscar un correo</a>
+{% endblock %}
