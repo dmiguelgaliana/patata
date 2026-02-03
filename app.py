@@ -14,12 +14,14 @@ def getmail():
 
     if request.method == "POST":
         nombre = request.form.get("nombre")
-        dato = obtener_mail(nombre)
 
-        if dato:
-            resultado = f"El correo de {nombre} es: {dato[0]}"
-        else:
-            error = f"No existe ningún usuario llamado '{nombre}'."
+        if nombre:
+            dato = obtener_mail(nombre)
+
+            if dato:
+                resultado = f"El correo de {nombre} es: {dato[0]}"
+            else:
+                error = f"No existe ningún usuario llamado '{nombre}'."
 
     return render_template("getmail.html", resultado=resultado, error=error)
 
@@ -35,7 +37,7 @@ def addmail():
         try:
             insertar_usuario(nombre, mail)
             mensaje = f"Usuario {nombre} añadido correctamente."
-        except:
+        except Exception as e:
             error = "Error al insertar usuario."
 
     return render_template("addmail.html", mensaje=mensaje, error=error)
