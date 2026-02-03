@@ -1,11 +1,12 @@
 import pymysql
 
 def conectar_db():
-    return mysql.connector.connect(
+    return pymysql.connect(
         host="localhost",
         user="nommail_user",
         password="1234",
-        database="nom_mail"
+        database="nom_mail",
+        cursorclass=pymysql.cursors.Cursor
     )
 
 def insertar_usuario(nombre, mail):
